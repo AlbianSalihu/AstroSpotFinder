@@ -1,0 +1,122 @@
+.dataset-status {
+    max-width: min(360px, calc(100vw - 40px));
+
+    padding: 10px 14px;
+
+    background: rgb(255 255 255 / 96%);
+    border: 1px solid rgb(0 0 0 / 12%);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 2px 8px rgb(0 0 0 / 18%),
+        0 6px 20px rgb(0 0 0 / 12%);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dataset-status__indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.dataset-status__indicator--ok {
+    background: #16a34a;
+}
+
+.dataset-status__indicator--warn {
+    background: #d97706;
+}
+
+.dataset-status__indicator--off {
+    background: #9ca3af;
+}
+
+.dataset-status__indicator--error {
+    background: #dc2626;
+}
+
+.dataset-status__indicator--loading {
+    background: #3b82f6;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.dataset-status__label {
+    color: #333;
+    line-height: 1.4;
+}
+
+.dataset-status__action {
+    align-self: flex-start;
+    padding: 4px 10px;
+
+    font-size: 12px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #0078d4;
+    border: 1px solid #0078d4;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.dataset-status__action:hover:not(:disabled) {
+    background: #e8f0fe;
+}
+
+.dataset-status__action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dataset-status__upgrade {
+    padding-top: 6px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dataset-status__upgrade-text {
+    margin: 0;
+    color: #555;
+    line-height: 1.4;
+}
+
+.dataset-status__path {
+    display: block;
+    padding: 4px 6px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #374151;
+    word-break: break-all;
+}
+
+.dataset-status__link {
+    color: #0078d4;
+    font-size: 12px;
+}

@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "pin-773bb17e-ac93-4d04-bd79-2a55536f430d",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.641683,
+          46.5406753
+        ]
+      },
+      "properties": {
+        "source": "address_search",
+        "label": "Maison"
+      }
+    }
+  ]
+}

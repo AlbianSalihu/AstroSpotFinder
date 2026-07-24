@@ -1,0 +1,1135 @@
+.pin-details {
+    position: fixed;
+
+    left: 20px;
+    bottom: 30px;
+
+    z-index: 10;
+
+    width: min(280px, calc(100vw - 40px));
+    max-height: calc(100vh - 100px);
+
+    padding: 16px;
+
+    background: rgb(255 255 255 / 96%);
+    border: 1px solid rgb(0 0 0 / 12%);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    box-shadow:
+        0 2px 8px rgb(0 0 0 / 18%),
+        0 6px 20px rgb(0 0 0 / 12%);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.pin-details[hidden] {
+    display: none;
+}
+
+.pin-details__title {
+    margin: 0 0 10px;
+
+    font-size: 17px;
+    line-height: 1.2;
+}
+
+.pin-details__label {
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 6px 8px;
+
+    font-size: 14px;
+    font-family: inherit;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f9f9f9;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.pin-details__label:focus {
+    border-color: #0078d4;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+}
+
+.pin-details__information {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin: 0 0 16px;
+}
+
+.pin-details__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.pin-details__row dt {
+    font-weight: 600;
+}
+
+.pin-details__row dd {
+    margin: 0;
+
+    font-family: monospace;
+    text-align: right;
+}
+
+.pin-details__gmaps-link {
+    display: block;
+    margin-top: 6px;
+
+    font-size: 12px;
+    color: #0078d4;
+    text-decoration: none;
+}
+
+.pin-details__gmaps-link:hover {
+    text-decoration: underline;
+}
+
+.pin-details__isochrone {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.pin-details__isochrone-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__mode-toggle {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.pin-details__mode-btn {
+    flex: 1;
+    padding: 6px;
+
+    font-size: 20px;
+    line-height: 1;
+
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.pin-details__mode-btn:hover {
+    background: #e8f0fe;
+    border-color: #aaa;
+}
+
+.pin-details__mode-btn--active {
+    background: #e8f0fe;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+}
+
+.pin-details__minutes-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pin-details__minutes-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__minutes-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__minutes-input:focus {
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+}
+
+.pin-details__isochrone-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #0078d4;
+
+    border: 1px solid #0078d4;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__isochrone-btn:hover:not(:disabled) {
+    background: #e8f0fe;
+}
+
+.pin-details__isochrone-btn--active {
+    background: #0078d4;
+    color: #fff;
+}
+
+.pin-details__isochrone-btn--active:hover:not(:disabled) {
+    background: #006bbf;
+}
+
+.pin-details__isochrone-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-details__elevation {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+}
+
+.pin-details__elevation-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #166534;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__elevation-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pin-details__elevation-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__elevation-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__elevation-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__elevation-input:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+.pin-details__elevation-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__elevation-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #16a34a;
+
+    border: 1px solid #16a34a;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__elevation-btn:hover:not(:disabled) {
+    background: #f0fdf4;
+}
+
+.pin-details__elevation-btn--active {
+    background: #16a34a;
+    color: #fff;
+}
+
+.pin-details__elevation-btn--active:hover:not(:disabled) {
+    background: #15803d;
+}
+
+.pin-details__elevation-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-details__delete {
+    width: 100%;
+
+    padding: 9px 12px;
+
+    background: #ffffff;
+    color: #b71c1c;
+
+    border: 1px solid #d32f2f;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.pin-details__delete:hover {
+    background: #ffebee;
+}
+
+.pin-details__delete:focus-visible {
+    outline: 3px solid rgb(211 47 47 / 30%);
+    outline-offset: 2px;
+}
+
+.pin-details__horizon {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #ecfeff;
+    border: 1px solid #a5f3fc;
+    border-radius: 8px;
+}
+
+.pin-details__horizon-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #0e7490;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__horizon-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.pin-details__horizon-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__horizon-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__horizon-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__horizon-input:focus {
+    border-color: #0891b2;
+    box-shadow: 0 0 0 2px rgba(8, 145, 178, 0.2);
+}
+
+.pin-details__horizon-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__horizon-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__horizon-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #0891b2;
+
+    border: 1px solid #0891b2;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__horizon-btn:hover:not(:disabled) {
+    background: #ecfeff;
+}
+
+.pin-details__horizon-btn--active {
+    background: #0891b2;
+    color: #fff;
+}
+
+.pin-details__horizon-btn--active:hover:not(:disabled) {
+    background: #0e7490;
+}
+
+.pin-details__horizon-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-details__cloud {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+}
+
+.pin-details__cloud-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__cloud-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.pin-details__cloud-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__cloud-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__cloud-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__cloud-input:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
+}
+
+.pin-details__cloud-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__cloud-note {
+    margin: 0 0 6px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__cloud-fetched-at {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #92400e;
+    line-height: 1.4;
+}
+
+.pin-details__cloud-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #d97706;
+
+    border: 1px solid #d97706;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__cloud-btn:hover:not(:disabled) {
+    background: #fffbeb;
+}
+
+.pin-details__cloud-btn--active {
+    background: #d97706;
+    color: #fff;
+}
+
+.pin-details__cloud-btn--active:hover:not(:disabled) {
+    background: #b45309;
+}
+
+.pin-details__cloud-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-details__light-pollution {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 8px;
+}
+
+.pin-details__lp-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #5b21b6;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__lp-unavailable {
+    margin: 0 0 8px;
+
+    font-size: 12px;
+    color: #7c3aed;
+    line-height: 1.4;
+}
+
+.pin-details__lp-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pin-details__lp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.pin-details__lp-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__lp-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__lp-input:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.pin-details__lp-unit {
+    margin: 0;
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.pin-details__lp-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #7c3aed;
+
+    border: 1px solid #7c3aed;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__lp-btn:hover:not(:disabled) {
+    background: #f5f3ff;
+}
+
+.pin-details__lp-btn--active {
+    background: #7c3aed;
+    color: #fff;
+}
+
+.pin-details__lp-btn--active:hover:not(:disabled) {
+    background: #6d28d9;
+}
+
+.pin-details__lp-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-details__intersect {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+}
+
+.pin-details__intersect-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__intersect-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #e11d48;
+
+    border: 1px solid #e11d48;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__intersect-btn:hover:not(:disabled) {
+    background: #fff1f2;
+}
+
+.pin-details__intersect-btn--active {
+    background: #e11d48;
+    color: #fff;
+}
+
+.pin-details__intersect-btn--active:hover:not(:disabled) {
+    background: #be123c;
+}
+
+.pin-details__intersect-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pin-details__parkings {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.pin-details__parkings-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__parkings-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #1e293b;
+
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__parkings-btn:hover:not(:disabled) {
+    background: #f1f5f9;
+}
+
+.pin-details__parkings-btn--active {
+    background: #1e293b;
+    color: #fff;
+}
+
+.pin-details__parkings-btn--active:hover:not(:disabled) {
+    background: #0f172a;
+}
+
+.pin-details__parkings-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Re-run on walking button (appears inside each filter section) */
+.pin-details__rerun-btn {
+    width: 100%;
+    margin-top: 6px;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+    font-family: inherit;
+
+    background: transparent;
+    color: #64748b;
+
+    border: 1px dashed #94a3b8;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.pin-details__rerun-btn:hover:not(:disabled) {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.pin-details__rerun-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Walking reachable subsection */
+.pin-details__walking {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.pin-details__walking-title {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #15803d;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__walking-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pin-details__walking-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__walking-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__walking-input {
+    width: 52px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__walking-input:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+.pin-details__walking-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__walking-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #16a34a;
+
+    border: 1px solid #16a34a;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__walking-btn:hover:not(:disabled) {
+    background: #f0fdf4;
+}
+
+.pin-details__walking-btn--active {
+    background: #16a34a;
+    color: #fff;
+}
+
+.pin-details__walking-btn--active:hover:not(:disabled) {
+    background: #15803d;
+}
+
+.pin-details__walking-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Open terrain subsection (WorldCover layer 1) */
+.pin-details__terrain {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.pin-details__terrain-title {
+    margin: 0 0 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__terrain-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__terrain-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pin-details__terrain-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__terrain-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__terrain-input {
+    width: 64px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__terrain-input:focus {
+    border-color: #92400e;
+    box-shadow: 0 0 0 2px rgba(146, 64, 14, 0.2);
+}
+
+.pin-details__terrain-input:disabled {
+    opacity: 0.5;
+}
+
+.pin-details__terrain-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__terrain-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #92400e;
+
+    border: 1px solid #92400e;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__terrain-btn:hover:not(:disabled) {
+    background: #fef3c7;
+}
+
+.pin-details__terrain-btn--active {
+    background: #92400e;
+    color: #fff;
+}
+
+.pin-details__terrain-btn--active:hover:not(:disabled) {
+    background: #78350f;
+}
+
+.pin-details__terrain-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Local sky opening subsection (ray-cast local horizon, layer 2) */
+.pin-details__local-horizon {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.pin-details__local-horizon-title {
+    margin: 0 0 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e40af;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pin-details__local-horizon-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+.pin-details__local-horizon-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pin-details__local-horizon-label {
+    font-size: 13px;
+    color: #444;
+}
+
+.pin-details__local-horizon-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pin-details__local-horizon-input {
+    width: 52px;
+    padding: 4px 6px;
+
+    font-size: 13px;
+    font-family: inherit;
+    text-align: right;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.pin-details__local-horizon-input:focus {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2);
+}
+
+.pin-details__local-horizon-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+.pin-details__local-horizon-btn {
+    width: 100%;
+
+    padding: 7px 10px;
+
+    font-size: 13px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #1e40af;
+
+    border: 1px solid #1e40af;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pin-details__local-horizon-btn:hover:not(:disabled) {
+    background: #eff6ff;
+}
+
+.pin-details__local-horizon-btn--active {
+    background: #1e40af;
+    color: #fff;
+}
+
+.pin-details__local-horizon-btn--active:hover:not(:disabled) {
+    background: #1e3a8a;
+}
+
+.pin-details__local-horizon-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Popup remove button */
+.parking-popup__remove {
+    display: block;
+    margin-top: 8px;
+    width: 100%;
+    padding: 4px 8px;
+
+    font-size: 11px;
+    font-family: inherit;
+
+    background: #fff;
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.parking-popup__remove:hover {
+    background: #fef2f2;
+}

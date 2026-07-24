@@ -1,0 +1,107 @@
+/*
+ * MapLibre positions this outer element.
+ *
+ * Its bottom-center corresponds exactly to the geographic
+ * coordinate because PinMarker uses anchor: "bottom".
+ */
+.astro-pin-marker {
+    position: absolute;
+
+    width: 34px;
+    height: 42px;
+
+    padding: 0;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+    appearance: none;
+}
+
+/*
+ * Only this inner shape is rotated.
+ *
+ * The bottom tip is centered at the bottom of the outer
+ * marker element.
+ */
+.astro-pin-marker__shape {
+    position: absolute;
+
+    top: 13px;
+    left: 5px;
+
+    width: 24px;
+    height: 24px;
+
+    background: var(--pin-color, #d32f2f);
+
+    border: 3px solid #ffffff;
+    border-radius: 50% 50% 50% 0;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 2px 4px rgb(0 0 0 / 30%),
+        0 4px 10px rgb(0 0 0 / 20%);
+
+    transform: rotate(-45deg);
+    transform-origin: center;
+
+    transition: transform 120ms ease;
+}
+
+.astro-pin-marker__shape::after {
+    content: "";
+
+    position: absolute;
+
+    top: 6px;
+    left: 6px;
+
+    width: 6px;
+    height: 6px;
+
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.astro-pin-marker:hover .astro-pin-marker__shape {
+    transform:
+        rotate(-45deg)
+        scale(1.1);
+}
+
+.astro-pin-marker:focus-visible {
+    outline: 3px solid #1565c0;
+    outline-offset: 2px;
+}
+
+.astro-pin-marker--default {
+    --pin-color: #d32f2f;
+}
+
+.astro-pin-marker--origin {
+    --pin-color: #1976d2;
+}
+
+.astro-pin-marker--candidate {
+    --pin-color: #388e3c;
+}
+
+.astro-pin-marker--selected .astro-pin-marker__shape {
+    transform:
+        rotate(-45deg)
+        scale(1.18);
+
+    box-shadow:
+        0 0 0 4px rgb(25 118 210 / 30%),
+        0 3px 6px rgb(0 0 0 / 35%),
+        0 6px 14px rgb(0 0 0 / 20%);
+}
+
+.astro-pin-marker--selected:hover .astro-pin-marker__shape {
+    transform:
+        rotate(-45deg)
+        scale(1.18);
+}
